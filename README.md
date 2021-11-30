@@ -1,10 +1,17 @@
 # todo-app
-```
- The application and what it will try to achieve. The application on initial load (more specifically on load of a component) will fetch some data from an API and stores it in the vuex store.We read the same data from the store and do all the manipulations with it.
-```
+
+- The application and what it will try to achieve. 
+- The application on initial load (more specifically on load of a component) will fetch some data from an API and stores it in the vuex store.
+- Then read the same data from the store and do all the manipulations with it.
+
 ## Project setup
 ```
 npm install
+```
+
+## Vuex installation
+```
+npm install vuex
 ```
 
 ### Compiles and hot-reloads for development
