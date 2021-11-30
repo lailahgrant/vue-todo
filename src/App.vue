@@ -1,14 +1,23 @@
 <template>
   <div id="app">
-    <h1>hello</h1>
-    <h2>lailah</h2>
+    <!-- <h1>hello</h1>
+    <h2>lailah</h2> -->
+    <UserComponent />
   </div>
 </template>
 
 <script>
 
+//import the component
+import UserComponent from "./components/UserComponent.vue"
+
 export default {
   name: 'App',
+  components: {
+
+    UserComponent
+  
+  }
   
 }
 </script>
