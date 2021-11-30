@@ -6,8 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 
     state: {
-
-
+        //state : It holds all the data for our application
+        
     },
 
     getters: {
@@ -22,7 +22,7 @@ export default new Vuex.Store({
 
     actions: {
         
-        
+
     }
 
 
