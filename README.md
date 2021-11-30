@@ -1,4 +1,4 @@
-# todo-app
+# Vuejs app with Vuex
 
 - The application and what it will try to achieve. 
 - The application on initial load (more specifically on load of a component) will fetch some data from an API and stores it in the vuex store.
