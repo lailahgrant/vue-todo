@@ -7,9 +7,83 @@ import AppApi from '../services/AppApi'
 import { mapMutations, mapState, mapGetters } from 'vuex'
 
 export default {
-    
-}
 
+    //add this
+    data(){
+        return {
+            username: '',
+            phone:'',
+            email: '',
+            website:''
+        }
+    },
+
+    //add in the life cycle hook computed add this
+    computed: {
+
+        ...mapState([
+            //this is the variable initialiazed in the state section of store(store.js)
+            'users'
+        ]),
+
+        ...mapGetters([
+            //the getter function names in the store.js file
+            'maxId',
+            'totalUsers'
+        ])
+
+    },
+
+    //add in the life cycle hook methods add this
+    methods: {
+
+        /*
+        * Manipulations of store
+        */
+
+        //Adding an user to the store
+        addUserInput(){
+            if(!this.username) return;
+        },
+
+        //Removing a user from store
+        removeUser(id){
+            this.REMOVE_USER(id)
+        },
+
+        addUser(data){
+            //data is coming from API
+            /*ADD_USER is a mutation function. 
+            It is now available for calling because we have used mapMutations to bind that with the component 
+            */
+            this.ADD_USER(data)
+        },
+
+        //function names in the mutation section in the store.js
+        ...mapMutations([
+            'ADD_USER',
+            'REMOVE_USER'
+        ]), // now, we've added all the code related to store.js, tie to call and utilize them.
+    },
+
+    //call this API in the created life cycle hook of vuejs
+    created() { //this is a lifecycle hook
+
+//AppApi which calls the API on page load.We are storing the response in our store.
+        AppApi.getUsers().then(users => {
+            this.addUser(users)
+        })
+
+        .catch()
+
+        .finally( () => {
+
+        }) 
+
+    }
+
+
+}
 
 </script>
 
@@ -62,6 +136,7 @@ export default {
                     <p>Website</p>
                 </div>
 
+<!-- Binding the store data with template -->
                 <div class="row" v-for="(user, index) in users" :key="user.id" >
                     <div>  {{user.name}} </div>
                     <div> <a href='"mailto:" +user.email'>{{ user.email}} </a> </div>
@@ -74,6 +149,9 @@ export default {
 
         </div>
 
+<!-- Use of getters 
+    we had mapGetters in our application.simply call that getter function.
+-->
         <p>Total users in store : <strong> {{ this.totalUsers }} </strong></p>
 
     </div>
