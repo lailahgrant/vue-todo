@@ -44,6 +44,20 @@ export default {
         //Adding an user to the store
         addUserInput(){
             if(!this.username) return;
+            this.addUser([{
+                "id": this.maxId,
+                "name": this.username,
+                "phone": this.phone,
+                "email": this.email,
+                "website": this.website,
+            }])
+
+            //after adding the fields(add button is clicked), empty the fields
+            this.username = ''
+            this.phone = ''
+            this.email = ''
+            this.website = ''
+
         },
 
         //Removing a user from store
